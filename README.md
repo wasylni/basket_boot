@@ -1,16 +1,21 @@
-#####Requirements
+######Requirements
 
 ######The application should be able to:
 
-1. Add a quantity of an item to the basket
+_1. Add a quantity of an item to the basket_
 
-1. Update the quantity of an item in the basket
+_2. Update the quantity of an item in the basket_
 
-1. Delete the item from the basket
+_3. Delete the item from the basket_
 
-1. Get the contents of the basket
+_4. Get the contents of the basket_
 
-1. Get to total cost for the basket (an item should have a unit cost)
+_5. Get to total cost for the basket (an item should have a unit cost)_
+
+
+![alt text](http://www.free-icons-download.net/images/shopping-cart-logo-icon-70706.png "cart")
+
+
 
 
 Service based on `org.springframework.boot` ver `1.5.2.RELEASE`
