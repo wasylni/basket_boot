@@ -14,7 +14,6 @@ import java.util.List;
 public class Basket {
 
     @Id
-    @GeneratedValue
     private long basketId;
 
     @OneToMany

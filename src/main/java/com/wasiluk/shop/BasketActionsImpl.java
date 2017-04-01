@@ -127,6 +127,7 @@ public class BasketActionsImpl implements BasketActions {
         Optional<Basket> basketFound = basketRepository.findOneByBasketId(basketId);
         if (!basketFound.isPresent()) {
             basket = new Basket();
+            basket.setBasketId(basketId);
             basket = basketRepository.save(basket);
         } else {
             basket = basketFound.get();

@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -49,7 +50,6 @@ public class BasketApplicationTests {
 		assertTrue(itemsFound.size()==items.size());
 	}
 
-
 	//	Add a quantity of an item to the basket
 	@Test
 	public void testAddNewBasket() throws Exception {
@@ -57,13 +57,22 @@ public class BasketApplicationTests {
 		assertEquals("basket shall have 10 items with sku 10001", 10, basketCreated.getBasketItems().get(0).getQuantity());
 	}
 
-
 	//	Update the quantity of an item in the basket
 	@Test
+	@Transactional
 	public void updateBasketItemQuantity() throws Exception {
-		Basket basketCreated2 = basketActions.add(2, 10002, 10);
-		Basket basketUpdated2 = basketActions.update(2, 10002, 8);
-		assertEquals("basket shall have 10 items with sku 10001", 8, basketUpdated2.getBasketItems().get(0).getQuantity());
+		basketActions.add(10, 10003, 10);
+		Basket b2 = basketActions.update(10, 10003, 8);
+		assertEquals("basket shall have 8 items with sku 10003", 8, b2.getBasketItems().get(0).getQuantity());
+	}
+
+	//	Calculate Basket value
+	@Test
+	@Transactional
+	public void calculateBasketPrice() throws Exception {
+		basketActions.add(10, 10003, 10);
+		BigDecimal bValue = basketActions.getTotal(10, "GBP");
+		assertEquals("basket value should be 990", "990", bValue.toPlainString());
 	}
 
 }
