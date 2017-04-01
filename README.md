@@ -33,32 +33,32 @@ mvn compile
 mvn exec:java
 ```
 
-######Load test items:
+###### Load test items:
 
 <http://localhost:8080/loadItems>
 
-######List test items:
+###### List test items:
 
 <http://localhost:8080/listItems>
 
 
-######Add item to the basket:
+###### Add item to the basket:
 
 <http://localhost:8080/add/1/10001/10>
 
-######Calculate basket total:
+###### Calculate basket total:
 
 <http://localhost:8080/total/1/GBP>
 
-######Show basket:
+###### Show basket:
 
 <http://localhost:8080/content/1>
 
-######Update basket item count:
+###### Update basket item count:
 
 <http://localhost:8080/update/1/10001/1>
 
 
-######Remove from basket item count:
+###### Remove from basket item count:
 
 <http://localhost:8080/remove/1/10001/1>
