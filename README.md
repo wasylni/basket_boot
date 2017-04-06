@@ -1,4 +1,4 @@
-#### (simpified) spring boot shopping basket implementation
+#### (simpified) spring boot shopping basket implementation/sample
 `org.springframework.boot`  `v1.5.2.RELEASE`
 
 
