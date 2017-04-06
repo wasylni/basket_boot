@@ -38,20 +38,31 @@ mvn test
 
 
 ###### Add item to the basket:
+
+`/add/{basketId}/{itemSku}/{itemQuantity}`
+
 POST <http://localhost:8080/add/1/10001/10>
 
 ###### Calculate basket total:
+
+`/total/{basketId}/{currencyCode}`
 
 GET <http://localhost:8080/total/1/GBP>
 
 ###### Show basket:
 
+`/content/{basketId}`
+
 GET <http://localhost:8080/content/1>
 
 ###### Update basket item count:
 
+`/update/{basketId}/{itemSku}/{itemQuantity}`
+
 POST <http://localhost:8080/update/1/10001/1>
 
 ###### Remove from basket item count:
+
+`/remove/{basketId}/{itemSku}/{itemQuantity}`
 
 DELETE <http://localhost:8080/remove/1/10001/1>
