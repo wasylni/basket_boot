@@ -1,9 +1,8 @@
-package com.wasiluk.shop;
+package com.wasiluk.shop.entity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
-import java.util.Collection;
 import java.util.Optional;
 
 /**

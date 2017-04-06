@@ -1,13 +1,15 @@
 package com.wasiluk.shop;
 
+import com.wasiluk.shop.entity.Basket;
+import com.wasiluk.shop.entity.Item;
+import com.wasiluk.shop.entity.ItemRepository;
+import com.wasiluk.shop.persistance.BasketRepository;
+import com.wasiluk.shop.service.BasketActions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +22,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class BasketApplicationTests {
 
 	@Autowired
@@ -50,29 +53,24 @@ public class BasketApplicationTests {
 		assertTrue(itemsFound.size()==items.size());
 	}
 
-	//	Add a quantity of an item to the basket
 	@Test
 	public void testAddNewBasket() throws Exception {
 		Basket basketCreated = basketActions.add(1, 10001, 10);
-		assertEquals("basket shall have 10 items with sku 10001", 10, basketCreated.getBasketItems().get(0).getQuantity());
+		assertEquals("basket shall have 10 items with sku 10001", 10, basketCreated.getBasketItems().iterator().next().getQuantity());
 	}
 
-	//	Update the quantity of an item in the basket
 	@Test
-	@Transactional
 	public void updateBasketItemQuantity() throws Exception {
 		basketActions.add(10, 10003, 10);
 		Basket b2 = basketActions.update(10, 10003, 8);
-		assertEquals("basket shall have 8 items with sku 10003", 8, b2.getBasketItems().get(0).getQuantity());
+		assertEquals("basket shall have 8 items with sku 10003", 8, b2.getBasketItems().iterator().next().getQuantity());
 	}
 
-	//	Calculate Basket value
 	@Test
-	@Transactional
 	public void calculateBasketPrice() throws Exception {
 		basketActions.add(10, 10003, 10);
 		BigDecimal bValue = basketActions.getTotal(10, "GBP");
-		assertEquals("basket value should be 990", "990", bValue.toPlainString());
+		assertEquals("basket value should be 990", BigDecimal.valueOf(990), bValue);
 	}
 
 }

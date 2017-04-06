@@ -1,10 +1,12 @@
-package com.wasiluk.shop;
+package com.wasiluk.shop.entity;
 
+import com.wasiluk.shop.util.BasketError;
+import com.wasiluk.shop.util.BasketStatus;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Created by marcin on 31-Mar-17.
@@ -17,7 +19,7 @@ public class Basket {
     private long basketId;
 
     @OneToMany
-    private List<BasketItem> basketItems = new ArrayList<>();
+    private Collection<BasketItem> basketItems = new ArrayList<>();
 
     private BasketStatus basketStatus;
 
@@ -28,7 +30,7 @@ public class Basket {
     public Basket() {
     }
 
-    public Basket(List<BasketItem> basketItems) {
+    public Basket(Collection<BasketItem> basketItems) {
         this.basketItems.addAll(basketItems);
         this.basketStatus = BasketStatus.ACTIVE;
         this.created = DateTime.now();
@@ -42,11 +44,11 @@ public class Basket {
         this.basketId = basketId;
     }
 
-    public List<BasketItem> getBasketItems() {
+    public Collection<BasketItem> getBasketItems() {
         return basketItems;
     }
 
-    public void setBasketItems(List<BasketItem> basketItems) {
+    public void setBasketItems(Collection<BasketItem> basketItems) {
         this.basketItems = basketItems;
     }
 

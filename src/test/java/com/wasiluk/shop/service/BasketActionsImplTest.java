@@ -1,5 +1,9 @@
-package com.wasiluk.shop;
+package com.wasiluk.shop.service;
 
+import com.wasiluk.shop.entity.Basket;
+import com.wasiluk.shop.entity.BasketItem;
+import com.wasiluk.shop.entity.Item;
+import com.wasiluk.shop.service.BasketActionsImpl;
 import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;

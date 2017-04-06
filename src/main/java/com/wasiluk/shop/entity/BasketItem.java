@@ -1,4 +1,4 @@
-package com.wasiluk.shop;
+package com.wasiluk.shop.entity;
 
 import javax.persistence.*;
 

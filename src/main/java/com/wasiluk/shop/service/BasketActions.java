@@ -1,7 +1,8 @@
-package com.wasiluk.shop;
+package com.wasiluk.shop.service;
+
+import com.wasiluk.shop.entity.Basket;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 /**
  * Created by marcin on 31-Mar-17.
@@ -28,9 +29,5 @@ public interface BasketActions {
     Basket getContent(final long basketId);
 
     BigDecimal getTotal(final long basketId, final String currency);
-
-    void addItems();
-
-    List<Item> listItems();
 
 }

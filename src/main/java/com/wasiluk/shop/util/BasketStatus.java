@@ -1,4 +1,4 @@
-package com.wasiluk.shop;
+package com.wasiluk.shop.util;
 
 /**
  * Created by marcin on 31-Mar-17.

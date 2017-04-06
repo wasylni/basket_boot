@@ -1,11 +1,17 @@
-package com.wasiluk.shop;
+package com.wasiluk.shop.service;
 
+import com.wasiluk.shop.entity.Basket;
+import com.wasiluk.shop.entity.BasketItem;
+import com.wasiluk.shop.entity.Item;
+import com.wasiluk.shop.entity.ItemRepository;
+import com.wasiluk.shop.persistance.BasketItemRepository;
+import com.wasiluk.shop.persistance.BasketRepository;
+import com.wasiluk.shop.util.BasketError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,11 +39,13 @@ public class BasketActionsImpl implements BasketActions {
         Basket basket = getBasket(basketId);
         BasketItem basketItem = new BasketItem(basket.getBasketId(), item.get(), itemQuantity);
 
-        if(basket.getBasketItems().stream().anyMatch(i -> i.getItem().getItemSku()==itemSku)){
-            basket.getBasketItems().forEach(i -> {if (i.getItem().getItemSku()==itemSku){
-                i.setQuantity(i.getQuantity()+itemQuantity);
-            }});
-        }else{
+        if (basket.getBasketItems().stream().anyMatch(i -> i.getItem().getItemSku() == itemSku)) {
+            basket.getBasketItems().forEach(i -> {
+                if (i.getItem().getItemSku() == itemSku) {
+                    i.setQuantity(i.getQuantity() + itemQuantity);
+                }
+            });
+        } else {
             basket.getBasketItems().add(basketItemRepository.save(basketItem));
         }
 
@@ -92,27 +100,6 @@ public class BasketActionsImpl implements BasketActions {
     public BigDecimal getTotal(long basketId, String currency) {
         Optional<Basket> basket = basketRepository.findOneByBasketId(basketId);
         return getBasketPrice(basket.get());
-    }
-
-
-    //TODO: remove this
-    @Override
-    public void addItems() {
-        List<Item> items = new ArrayList<>();
-        items.add(new Item(10001, new BigDecimal(99), 100));
-        items.add(new Item(10002, new BigDecimal(99), 100));
-        items.add(new Item(10003, new BigDecimal(99), 100));
-        items.add(new Item(10004, new BigDecimal(99), 100));
-        items.add(new Item(10005, new BigDecimal(99), 100));
-        items.add(new Item(10006, new BigDecimal(99), 100));
-        itemRepository.save(items);
-
-    }
-
-    //TODO: remove this
-    @Override
-    public List<Item> listItems() {
-        return itemRepository.findAll();
     }
 
     BigDecimal getBasketPrice(Basket basket) {
