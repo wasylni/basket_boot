@@ -3,7 +3,7 @@ package com.wasiluk.shop.service;
 import com.wasiluk.shop.entity.Basket;
 import com.wasiluk.shop.entity.BasketItem;
 import com.wasiluk.shop.entity.Item;
-import com.wasiluk.shop.entity.ItemRepository;
+import com.wasiluk.shop.persistance.ItemRepository;
 import com.wasiluk.shop.persistance.BasketItemRepository;
 import com.wasiluk.shop.persistance.BasketRepository;
 import com.wasiluk.shop.util.BasketError;

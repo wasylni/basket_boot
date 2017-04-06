@@ -2,7 +2,7 @@ package com.wasiluk.shop;
 
 import com.wasiluk.shop.entity.Basket;
 import com.wasiluk.shop.entity.Item;
-import com.wasiluk.shop.entity.ItemRepository;
+import com.wasiluk.shop.persistance.ItemRepository;
 import com.wasiluk.shop.persistance.BasketRepository;
 import com.wasiluk.shop.service.BasketActions;
 import org.junit.Before;
